@@ -11,8 +11,22 @@ import Profile from './screens/Profile';
 const Stack = createNativeStackNavigator();
 
 function App() {
+
+  const config = {
+    screens: {
+      Home: "home",
+      Details: "details",
+      Profile: "profile"
+    }
+  }
+
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      linking={{
+        prefixes: ["deeplink://app"],
+        config
+      }}
+    >
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Details" component={Details} />
